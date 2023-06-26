@@ -14,10 +14,10 @@ class VkTools:
     def __init__(self, acces_token):
         self.vkapi = vk_api.VkApi(token=acces_token)
 
-    # def _bdate_toyear(self, bdate):
-    #     user_year = bdate.split('.')[2]
-    #     now = datetime.now().year
-    #     return now - int(user_year)
+    def _bdate_toyear(self, bdate):
+        user_year = bdate.split('.')[2]
+        now = datetime.now().year
+        return now - int(user_year)
 
     def get_profile_info(self, user_id):
 
@@ -82,6 +82,7 @@ class VkTools:
                    } for item in photos['items']
                   ]
         '''сортировка п лайкам и комментам'''
+        result.sort(key=lambda x: x['likes']+x['comments']*10, reverse=True)
         return result[:3]
 
 

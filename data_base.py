@@ -7,8 +7,10 @@ from sqlalchemy.orm import Session
 
 from config import db_url_object
 
+
 metadata = MetaData()
 Base = declarative_base()
+engine = create_engine(db_url_object)
 
 
 class Viewed(Base):
@@ -40,7 +42,8 @@ def check_user(engine, profile_id, worksheet_id):
 
 if __name__ == '__main__':
     engine = create_engine(db_url_object)
-    Base.metadata.create_all(engine)
-    add_user(engine, 2113, 124512)
-    res = check_user(engine, 2113, 1245121)
-    print(res)
+    # Base.metadata.create_all(engine)
+   
+    
+
+
